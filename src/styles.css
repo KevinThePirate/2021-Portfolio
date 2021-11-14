@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Comfortaa", cursive;
+}
+p {
+  font-size: 1.25em;
+}
+h3 {
+  font-size: 5em;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.section1 {
+  color: #fff;
+}
+.fp-section h1 {
+  font-size: 5rem;
+}
+.fp-section h4 {
+  font-size: 1.5rem;
+}
+#title-area {
+  display: inline-block;
+  margin-left: 10%;
+  margin-top: 15%;
+}
+
+button {
+  padding: 0.93em 1.87em;
+  background: #35495e;
+  border-radius: 5px;
+  border-color: transparent;
+  display: block;
+  color: #fff;
+  margin: 0 auto;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+button:hover {
+  background-color: #f69f1f;
+}
+i:hover {
+  color: #f69f1f;
+}
+#section-2 {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+#two-one,
+#two-two {
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+#two-one {
+  position: absolute;
+  left: 0;
+}
+#two-two {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.logo {
+  border: 10px solid white;
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+}
+#basic-info-area {
+  text-align: center;
+}
+#basic-info-area a {
+  font-size: 2rem;
+  color: black;
+  margin: 5px;
+}
+#basic-info-area p {
+  text-align: justify;
+  margin: 50px;
+}
+#work-area {
+  height: 60%;
+  position: absolute;
+  top: 0;
+  bottom: 60%;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#button-area {
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: calc(100% - 110px);
+  margin-left: 50px;
+  margin-right: 50px;
+}
+table {
+  width: 75%;
+  margin: auto;
+}
+table button {
+  width: 100%;
+  height: 100%;
+}
+table td {
+  width: 33%;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  margin: auto;
+  height: 90vh;
+  padding: 20px;
+  margin-top: -200px;
+}
+
+.card-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.card-container div {
+  width: 90%;
+  height: 30vh;
+  margin: 10px;
+  overflow: hidden;
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #777;
+  border-radius: 0.5rem;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+.card-container p {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.card-container div img {
+  width: 100%;
+  aspect-ratio: 16 / 3;
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+  transition: 200ms transform ease-in-out;
+}
+.card-container div img:hover {
+  transform: scale(1.025);
+}
+.skill-button {
+  display: inline;
+  margin: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.project-links a {
+  color: black;
+}
+
+@media screen and (max-width: 767px) {
+  #two-one,
+  #two-two {
+    width: 100%;
+    height: 50%;
+  }
+  table {
+    margin-top: -20px;
+  }
+  #two-one {
+    top: 0;
+  }
+  #two-two {
+    top: 50%;
+  }
+  .logo {
+    border: 5px solid white;
+    width: 25%;
+    height: 25%;
+    border-radius: 100%;
+    margin-top: 50px;
+  }
+  #basic-info-area {
+    text-align: center;
+  }
+  #basic-info-area h1 {
+    font-size: 40px;
+  }
+  #basic-info-area a {
+    font-size: 1.5rem;
+    color: black;
+    margin: 5px;
+  }
+  #work-area {
+    height: 55%;
+  }
+  #button-area {
+    position: absolute;
+    top: 55%;
+    height: 45%;
+    width: calc(100% - 110px);
+  }
+  #work-area > * {
+    margin-top: -20px;
+  }
+  #work-area h5 {
+    margin-bottom: 0;
+  }
+  #work-area p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .container button {
+    width: calc(100% / 9);
+    padding: 0;
+    font-size: ;
+  }
+}
