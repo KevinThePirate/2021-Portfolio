@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
-
+import pfp from "../images/pfp.jpg";
+import JobTabs from "./JobTabs";
 export default class AboutSection extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <>
         <div id="two-one">
           <div id="basic-info-area">
-            <img
-              src="https://media-exp1.licdn.com/dms/image/C4D03AQGHDI7MbsUQfw/profile-displayphoto-shrink_800_800/0/1631288206108?e=1638403200&v=beta&t=BFJ_niMl4ofx36zSnWvPbXPJfZVvVwZd8N9HXl26Ook"
-              className="logo"
-            />
+            <img src={pfp} className="logo" />
             <h1>Kevin M. Smith</h1>
             <div id="logo-area">
               <a
@@ -47,49 +48,25 @@ export default class AboutSection extends Component {
               </a>
             </div>
             <p>
-              A highly enthusiastic Creative Digital Media student in Cork
-              Institute of Technology with a dedication and drive to work.
-              Proven ability to plan, organise and research along with the
-              skills to put these into action from my work at MyFutprint
-              Entertainment and from my independent graphic novels.
+              I'm an award winning comic writer and designer working in the
+              International industry for the past 6 years, including work as a
+              story editor and magazine head for MyFutprint Entertainment, the
+              largest diversity-based comic publisher. I also have experience in
+              corporate design for DePuy Synthes and J&J, freelance web
+              development, and over 10 years of teaching experience for various
+              different schools and organizations.
             </p>
           </div>
         </div>
         <div id="two-two">
           <div id="work-area">
-            <div id="container">
-              <h2>Abridged Work Experience</h2>
-              <div>
-                <h4>MyFutprint Entertainment, LLC:</h4>
-                <p>Aug 2019 - Oct 2021</p>
-                <div>
-                  Brought on as an intern in August 2019 and worked my way onto
-                  the staff as an editor for various international graphic
-                  novels.
-                </div>
-              </div>
-              <div>
-                <h4>DePuy Synthes Companies:</h4>
-                <div>
-                  <div>
-                    <p>Jan 2021 - Aug 2021</p>
-                  </div>
-                  <div>
-                    Communications Co-Op. Involved Web Design, Graphic Design,
-                    Video Editing & Motion Graphic Design for a global audience.
-                    Wrote a comprehensive, 60+ page “Communications Playbook”
-                    teaching future team members how to interact with all of our
-                    various technical systems.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h2 id="job-title">Where I’ve Worked</h2>
+            <JobTabs />
           </div>
           <div id="button-area">
-            <h2>Select Portfolio</h2>
-            <table>
-              <tbody>{this.props.buttonGen()}</tbody>
-            </table>
+            <button onClick={() => this.props.api.moveTo(3)}>
+              View Portfolio Cards
+            </button>
           </div>
         </div>
       </>

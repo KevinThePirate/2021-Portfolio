@@ -1,22 +1,28 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
 import ReactFullpage from "@fullpage/react-fullpage";
 import Data from "./data.json";
 import "./styles.css";
-
 import TitleSection from "./components/TitleSection-1";
 import AboutSection from "./components/AboutSection";
 import PortfolioSection from "./components/PortfolioSection";
 import FooterSection from "./components/FooterSection";
 import PortfolioNavBar from "./components/PortfolioNavBar";
+import { motion, AnimateSharedLayout } from "framer-motion";
+
+import { useState } from "react";
 
 export let topics = [];
 for (let i = 0; i < Data.length; i++) {
   topics.push(Data[i].title);
 }
 console.log({ topics });
+
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) => <li>{number}</li>);
+
+let testVar = 0;
 
 class FullpageWrapper extends React.Component {
   constructor(props) {
@@ -29,16 +35,42 @@ class FullpageWrapper extends React.Component {
   afterLoad(origin, destination, direction) {
     console.log("After load: " + destination.index);
   }
+
   buttonGen() {
     let table = [];
     for (let i = 0; i < topics.length; i++) {
-      if (i == topics.length / 2) {
-        table.push(<tr></tr>);
-      }
       table.push(
-        <td>
-          <button onClick={() => this.api.moveTo(3, i)}>{topics[i]}</button>
-        </td>
+        <motion.button
+          className="portfolio-cards"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.25, duration: 0.5 }}
+          whileHover={{
+            scale: 1.1,
+            transition: { duration: 0.1, delay: 0.1 },
+          }}
+          whileTap={{ scale: 0.9 }}
+          viewport={{ once: true }}
+          onClick={() => {
+            testVar = i;
+            this.api.moveTo(4, i);
+          }}></motion.button>
+      );
+    }
+    console.log({ table });
+    /*table = table.map((topic) => (
+      <button onClick={() => fullpageApi.moveTo(1, 0)}> {topic} </button>
+    ));*/
+    return table;
+  }
+
+  portGen() {
+    let table = [];
+    for (let i = 0; i < topics.length; i++) {
+      table.push(
+        <div className="slide">
+          <PortfolioSection id="portfolio-sect" activePort={i} />
+        </div>
       );
     }
     console.log({ table });
@@ -68,13 +100,15 @@ class FullpageWrapper extends React.Component {
               <div className="section" id="section-2">
                 <AboutSection api={this.api} buttonGen={this.buttonGen} />
               </div>
-              <div className="section" id="section-3">
-                <PortfolioNavBar api={this.api} buttonGen={this.buttonGen} />
-                <PortfolioSection id="portfolio-sect" />
+              <div className="section" id="section-4">
+                {this.buttonGen()}
               </div>
-              {/* <div className="section">
+              <div className="section" id="section-3">
+                {this.portGen()}
+              </div>
+              <div className="section" id="section-5">
                 <FooterSection api={this.api} />
-          </div> */}
+              </div>
             </div>
           );
         }}
@@ -82,7 +116,7 @@ class FullpageWrapper extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<FullpageWrapper />, document.getElementById("react-root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<FullpageWrapper />);
 
 export default FullpageWrapper;
